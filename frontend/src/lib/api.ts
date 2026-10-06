@@ -1,4 +1,4 @@
-import { ClaimIn, DecisionCreate } from "./types";
+import { ClaimIn, DecisionCreate, ClaimDetailResponse } from "./types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -37,7 +37,7 @@ export async function getClaimHistory(id: string | number) {
   return fetchAPI(`/claims/${id}/history`);
 }
 
-export async function createClaim(data: ClaimIn) {
+export async function createClaim(data: ClaimIn): Promise<ClaimDetailResponse> {
   return fetchAPI("/claims", {
     method: "POST",
     body: JSON.stringify(data),

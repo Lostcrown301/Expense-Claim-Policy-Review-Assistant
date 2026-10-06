@@ -33,7 +33,7 @@ export default function NewClaimPage() {
       };
 
       const result = await createClaim(payload);
-      router.push(`/claims/${result.id}`);
+      router.push(`/claims/${result.claim.id}`);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Failed to create claim");
       setLoading(false);
