@@ -89,6 +89,7 @@ class ClaimListItem(ClaimResponse):
     ai_verdict: Optional[str] = None
     ai_uncertain: Optional[bool] = None
     validation_status: Optional[str] = None
+    overall_status: Optional[str] = None
     latest_decision: Optional[str] = None
 
 class ClaimDetailResponse(BaseModel):
@@ -96,6 +97,7 @@ class ClaimDetailResponse(BaseModel):
     validation: Optional[ValidationResultResponse]
     ai_review: Optional[AIReviewResponse]
     ai_status: str
+    overall_status: Optional[str] = None
     history: List[DecisionResponse]
 
 class DecisionHistoryResponse(BaseModel):

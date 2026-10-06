@@ -73,6 +73,7 @@ export interface ClaimListItem extends ClaimResponse {
   ai_verdict?: string;
   ai_uncertain?: boolean;
   validation_status?: string;
+  overall_status?: string;
   latest_decision?: string;
 }
 
@@ -81,6 +82,7 @@ export interface ClaimDetailResponse {
   validation?: ValidationResultResponse;
   ai_review?: AIReviewResponse;
   ai_status: string;
+  overall_status?: string;
   history: DecisionResponse[];
 }
 

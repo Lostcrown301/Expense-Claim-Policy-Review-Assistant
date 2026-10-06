@@ -159,6 +159,14 @@ export default function ClaimDetail({ params }: { params: Promise<{ id: string }
         {/* Left Column: Review Workspace */}
         <div className="lg:col-span-8 space-y-16">
           
+          {/* Overall Status */}
+          <section className="space-y-4">
+            <h2 className="text-[11px] font-mono tracking-widest text-[#111111] uppercase">Overall Review Status</h2>
+            <div>
+              <StatusBadge status={claimData.overall_status || "needs_review"} />
+            </div>
+          </section>
+
           {/* Validation */}
           <section className="space-y-4">
             <h2 className="text-[11px] font-mono tracking-widest text-[#111111] uppercase">Validation</h2>

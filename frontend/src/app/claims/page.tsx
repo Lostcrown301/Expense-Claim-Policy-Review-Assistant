@@ -27,7 +27,6 @@ export default function ClaimsPage() {
         setLoading(false);
       }
     }
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadClaims();
   }, []);
 
@@ -89,9 +88,9 @@ export default function ClaimsPage() {
   // Derive filtered claims
   const filteredClaims = claims.filter(claim => {
     if (activeFilter === "all") return true;
-    if (activeFilter === "needs_review") return claim.ai_verdict === "needs_review";
-    if (activeFilter === "needs_clarification") return claim.ai_verdict === "needs_clarification";
-    if (activeFilter === "complies") return claim.ai_verdict === "complies";
+    if (activeFilter === "needs_review") return claim.overall_status === "needs_review";
+    if (activeFilter === "needs_clarification") return claim.overall_status === "needs_clarification";
+    if (activeFilter === "complies") return claim.overall_status === "complies";
     return true;
   });
 
@@ -199,10 +198,8 @@ export default function ClaimsPage() {
                   <div className="flex items-center gap-2 group-hover:opacity-90 transition-opacity">
                     {claim.latest_decision ? (
                       <StatusBadge status={claim.latest_decision} />
-                    ) : claim.ai_verdict ? (
-                      <StatusBadge status={claim.ai_verdict} />
-                    ) : claim.validation_status === "fail" ? (
-                      <StatusBadge status="validation_failed" type="error" />
+                    ) : claim.overall_status ? (
+                      <StatusBadge status={claim.overall_status} />
                     ) : (
                       <span className="text-[11px] font-medium tracking-wide uppercase text-[#6B7280]">Pending</span>
                     )}

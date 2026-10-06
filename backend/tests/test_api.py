@@ -66,6 +66,26 @@ def test_create_claim(mock_rc):
     assert data["ai_review"]["verdict"] == "complies"
     assert data["validation"]["passed"] is True
     assert data["ai_status"] == "ok"
+    assert data["overall_status"] == "complies"
+
+@patch("app.main.review_claim", side_effect=mock_review_claim)
+def test_create_claim_validation_fails(mock_rc):
+    response = client.post(
+        "/claims",
+        json={
+            "claimant": "John Doe",
+            "description": "Dinner while traveling to Bengaluru for a client meeting",
+            "category": "meals",
+            "amount": 2000,
+            "currency": "INR",
+            "date": "2026-10-06"
+        }
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert data["ai_review"]["verdict"] == "complies"
+    assert data["validation"]["passed"] is False
+    assert data["overall_status"] == "needs_review"
 
 @patch("app.main.review_claim", side_effect=mock_review_claim_unavailable)
 def test_create_claim_ai_unavailable(mock_rc):
