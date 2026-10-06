@@ -1,0 +1,17 @@
+# Assumed values (no policy was supplied with the brief). Edit here only; code reads this file.
+currency_supported: [INR]
+receipt_required_above: 500
+max_claim_age_days: 60
+ai_confidence_threshold: 0.7
+duplicate_match_fields: [claimant, date, amount, category]
+
+categories:
+  meals:                { per_claim: 1500,  per_day: 2500 }
+  travel_local:         { per_claim: 3000,  per_day: 5000 }
+  travel_intercity:     { per_claim: 15000 }
+  lodging:              { per_claim: 6000,  per_day: 6000 }
+  software:             { per_claim: 10000, approval_required_above: 5000 }
+  client_entertainment: { per_claim: 5000 }
+  office_supplies:      { per_claim: 2000 }
+  training:             { per_claim: 20000 }
+  other:                { per_claim: 1000 }

@@ -1,0 +1,13 @@
+[
+  {"claimant": "Asha", "date": "2026-09-28", "category": "meals", "amount": 850, "currency": "INR", "description": "Dinner while traveling to Bengaluru for client visit", "receipt_available": true, "_case": "clean"},
+  {"claimant": "Asha", "date": "2026-09-28", "category": "meals", "amount": 850, "currency": "INR", "description": "Dinner in Bengaluru", "receipt_available": true, "_case": "duplicate of #1"},
+  {"claimant": "Ravi", "date": "2026-09-30", "category": "travel_local", "amount": 1200, "currency": "INR", "description": "Cab to airport for client trip", "receipt_available": false, "_case": "missing receipt (above 500)"},
+  {"claimant": "Meera", "date": "2026-09-25", "category": "lodging", "amount": 9000, "currency": "INR", "description": "Hotel in Pune, 1 night, conference", "receipt_available": true, "_case": "over category limit"},
+  {"claimant": "Karan", "date": "2026-10-01", "category": "other", "amount": 3200, "currency": "INR", "description": "team thing at the pub", "receipt_available": true, "_case": "ambiguous: meals / alcohol / client entertainment / team event"},
+  {"claimant": "Asha", "date": "2027-01-15", "category": "software", "amount": 1999, "currency": "INR", "description": "Figma subscription", "receipt_available": true, "_case": "future date"},
+  {"claimant": "Ravi", "date": "2026-05-01", "category": "office_supplies", "amount": 450, "currency": "INR", "description": "Notebooks and pens", "receipt_available": false, "_case": "older than 60 days"},
+  {"claimant": "Meera", "date": "2026-09-20", "category": "software", "amount": 7500, "currency": "INR", "description": "Annual JetBrains license", "receipt_available": true, "_case": "above software approval threshold"},
+  {"claimant": "Karan", "date": "2026-09-22", "category": "client_entertainment", "amount": 4200, "currency": "INR", "description": "Dinner with Acme Corp team, includes wine", "receipt_available": true, "_case": "alcohol exception, no client purpose detail"},
+  {"claimant": "Ravi", "date": "2026-10-02", "category": "travel_local", "amount": 650, "currency": "INR", "description": "Uber home from office at 11 PM", "receipt_available": true, "_case": "late-night cab, policy allows; AI should cite 3.1"},
+  {"claimant": "", "date": "2026-10-03", "category": "meals", "amount": -200, "currency": "INR", "description": "", "receipt_available": true, "_case": "missing claimant, negative amount, empty description"}
+]
