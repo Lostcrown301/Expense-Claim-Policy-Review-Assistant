@@ -2,7 +2,7 @@
 
 import { useEffect, useState, use, useCallback } from "react";
 import { getClaim, makeDecision, getClaimHistory } from "@/lib/api";
-import { ClaimDetailResponse, DecisionResponse } from "@/lib/types";
+import { ClaimDetailResponse, DecisionResponse, CATEGORY_OPTIONS } from "@/lib/types";
 import { StatusBadge } from "@/components/StatusBadge";
 import Link from "next/link";
 import { Check, X, AlertTriangle } from "lucide-react";
@@ -381,15 +381,11 @@ export default function ClaimDetail({ params }: { params: Promise<{ id: string }
                       value={actionCategory}
                       onChange={(e) => setActionCategory(e.target.value)}
                     >
-                      <option value="">Select category...</option>
-                      <option value="Meals">Meals</option>
-                      <option value="Travel Local">Travel Local</option>
-                      <option value="Travel International">Travel International</option>
-                      <option value="Accommodation">Accommodation</option>
-                      <option value="Equipment">Equipment</option>
-                      <option value="Training">Training</option>
-                      <option value="Software">Software</option>
-                      <option value="Other">Other</option>
+                      {CATEGORY_OPTIONS.map(opt => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 )}

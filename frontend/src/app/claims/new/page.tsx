@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClaim } from "@/lib/api";
+import { CATEGORY_OPTIONS } from "@/lib/types";
 import Link from "next/link";
 
 export default function NewClaimPage() {
@@ -107,15 +108,11 @@ export default function NewClaimPage() {
               onChange={handleChange}
               className="block w-full rounded-lg border-[#D1D5DB] bg-white text-[#111111] text-[14px] px-3 py-2 focus:ring-1 focus:ring-[#2563EB] focus:border-[#2563EB] outline-none border transition-colors"
             >
-              <option value="">Select...</option>
-              <option value="Meals">Meals</option>
-              <option value="Travel Local">Travel Local</option>
-              <option value="Travel International">Travel International</option>
-              <option value="Accommodation">Accommodation</option>
-              <option value="Equipment">Equipment</option>
-              <option value="Training">Training</option>
-              <option value="Software">Software</option>
-              <option value="Other">Other</option>
+              {CATEGORY_OPTIONS.map(opt => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
             </select>
           </div>
 

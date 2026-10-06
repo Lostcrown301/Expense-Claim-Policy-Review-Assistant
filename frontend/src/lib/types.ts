@@ -83,3 +83,16 @@ export interface ClaimDetailResponse {
   ai_status: string;
   history: DecisionResponse[];
 }
+
+export const CATEGORY_OPTIONS = [
+  { label: "Select...", value: "" },
+  { label: "Meals", value: "meals" },
+  { label: "Travel Local", value: "travel_local" },
+  { label: "Travel Intercity", value: "travel_intercity" },
+  { label: "Accommodation", value: "lodging" },
+  { label: "Software", value: "software" },
+  { label: "Client Entertainment", value: "client_entertainment" },
+  { label: "Office Supplies", value: "office_supplies" },
+  { label: "Training", value: "training" },
+  { label: "Other", value: "other" }
+];
