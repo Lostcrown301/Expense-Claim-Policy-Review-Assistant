@@ -274,3 +274,27 @@ def test_overall_status():
         ValidationResult(check="3", status="fail", detail="")
     ]) == "failed"
 
+
+@pytest.mark.parametrize("category_input, expected_status", [
+    ("software", "pass"),
+    ("Software", "pass"),
+    ("SOFTWARE", "pass"),
+    (" software ", "pass"),
+    ("unknown_cat", "fail"),
+])
+def test_category_normalization(limits, category_input, expected_status):
+    today = date(2026, 10, 5)
+    base_dict = {
+        "id": 99,
+        "claimant": "TestUser",
+        "date": "2026-10-01",
+        "category": category_input,
+        "amount": 100,
+        "currency": "INR",
+        "description": "Software test",
+        "receipt_available": True
+    }
+    claim = ClaimIn(**base_dict)
+    
+    res = validate_claim(claim, [], limits, today)
+    assert any(r.check == "category_valid" and r.status == expected_status for r in res)

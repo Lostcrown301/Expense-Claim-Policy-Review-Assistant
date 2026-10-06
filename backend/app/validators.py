@@ -202,7 +202,7 @@ def compute_totals(claims: List[Dict[str, Any]]) -> Dict[str, Any]:
     
     for claim in claims:
         claimant = str(claim.get("claimant", "")).strip()
-        cat = str(claim.get("category", "")).strip()
+        cat = str(claim.get("category", "")).strip().lower()
         try:
             amt = Decimal(str(claim.get("amount", 0)))
         except (InvalidOperation, TypeError, ValueError):

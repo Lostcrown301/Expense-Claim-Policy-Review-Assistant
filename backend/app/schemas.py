@@ -1,4 +1,4 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, field_validator
 from typing import Any, Literal, List, Optional
 from datetime import datetime, date
 from .ai_schemas import Citation
@@ -13,6 +13,13 @@ class ClaimIn(BaseModel):
     currency: Any = None
     description: Any = None
     receipt_available: bool = False
+
+    @field_validator("category")
+    @classmethod
+    def normalize_category(cls, v: Any) -> Any:
+        if isinstance(v, str) and v.strip():
+            return v.strip().lower()
+        return v
 
 class ValidationResult(BaseModel):
     check: str
@@ -48,6 +55,13 @@ class DecisionCreate(BaseModel):
     action: Literal["approve", "reject", "request_clarification", "override_category"]
     reason: Optional[str] = None
     category: Optional[str] = None # Used for override_category
+
+    @field_validator("category")
+    @classmethod
+    def normalize_category(cls, v: Any) -> Any:
+        if isinstance(v, str) and v.strip():
+            return v.strip().lower()
+        return v
 
 class DecisionResponse(BaseModel):
     id: int
