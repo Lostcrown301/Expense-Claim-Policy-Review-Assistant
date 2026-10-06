@@ -212,6 +212,10 @@ The application architecture is designed for the following deployment stack:
 - **Backend**: Render (Python 3.12)
 - **Database**: Neon PostgreSQL
 
+### Deployment note
+
+The backend is hosted on Render. Because the service may spin down when idle, the **first request after a period of inactivity can take a little longer while the backend starts up**. This is expected behavior for the deployed demo; subsequent requests should respond normally.
+
 ### Live Demo
 **Frontend**: [https://expense-claim-policy-review-assista-eight.vercel.app/claims](https://expense-claim-policy-review-assista-eight.vercel.app/claims)
 
