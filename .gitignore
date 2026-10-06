@@ -35,8 +35,11 @@ build/
 
 # Env vars
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+backend/.env
+frontend/.env.local
+frontend/.env*.local
 
 # Databases
 *.db
